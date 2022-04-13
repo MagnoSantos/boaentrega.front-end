@@ -1,0 +1,29 @@
+{
+    "success": true,
+    "message": "string",
+    "data": [
+      {
+        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "name": "string",
+        "description": "string",
+        "price": 0,
+        "seller": {
+          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "user": {
+            "name": "string"
+          }
+        },
+        "banned": true,
+        "images": [
+          {
+            "path": "string"
+          }
+        ],
+        "category": {
+          "id": "string",
+          "name": "string"
+        }
+      }
+    ],
+    "csrfToken": "string"
+  }
