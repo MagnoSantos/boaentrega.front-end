@@ -1,14 +1,22 @@
 import { Flex, Heading, Spinner, Text, useToast } from "@chakra-ui/react";
 import * as React from "react";
+import { useEffect, useState } from "react";
+import api from "services/api/backend";
 import { AdminProductCard } from "~/components/admin/AdminProductCard";
 import Dashboard from "~/components/admin/Dashboard";
 import { ProductGrid } from "~/components/ProductGrid";
 import { useAllProducts } from "~/hooks/useAllProducts";
 import { fetcher } from "~/lib/api";
 import { toastWrapper } from "~/lib/toast";
+import { Product } from "~/types";
 
 const Products: React.FC = () => {
-  const { products, error, mutate, isLoading } = useAllProducts();
+  const [products, setProducts] = useState<Product[]>();
+  useEffect(() => {
+    api.get("commodities").then((res) => {
+      if (res.data.data) setProducts(res.data.data);
+    });
+  }, []);
   const toast = useToast();
   const onBan = async (productId: string) => {
     const res = await fetcher(`products/${productId}/ban`, "POST", {});
@@ -16,7 +24,6 @@ const Products: React.FC = () => {
       toastWrapper(toast, res.error, "Error", res.error);
     } else {
       toastWrapper(toast, undefined, "Info", "Banned");
-      mutate();
     }
   };
 
@@ -26,28 +33,8 @@ const Products: React.FC = () => {
       toastWrapper(toast, res.error, "Error", res.error);
     } else {
       toastWrapper(toast, undefined, "Info", "Unbanned");
-      mutate();
     }
   };
-
-  if (error || (!products && !isLoading)) {
-    return (
-      <Flex
-        direction="column"
-        flex="1"
-        overflow="auto"
-        px="10"
-        pt={{ md: 1, base: 1 }}
-      >
-        <Heading size="lg" fontWeight="extrabold" mb="6">
-          Todos os produtos
-        </Heading>
-        <Text fontSize="2xl" as="b" color="red">
-          Erro
-        </Text>
-      </Flex>
-    );
-  }
 
   return (
     <Dashboard>
@@ -61,29 +48,19 @@ const Products: React.FC = () => {
         <Heading size="lg" fontWeight="extrabold" mb="6">
           Todos os produtos
         </Heading>
-        {isLoading ? (
-          <Spinner
-            thickness="4px"
-            speed="0.65s"
-            emptyColor="gray.200"
-            color="purple.500"
-            size="xl"
-          />
-        ) : (
-          <ProductGrid>
-            {products.map((product) => (
-              <AdminProductCard
-                key={product.id}
-                product={product}
-                buttonText={product.banned ? "Unban" : "Ban"}
-                buttonColor={product.banned ? "green" : "red"}
-                onButtonClick={() =>
-                  product.banned ? onUnban(product.id) : onBan(product.id)
-                }
-              />
-            ))}
-          </ProductGrid>
-        )}
+        <ProductGrid>
+          {products?.map((product) => (
+            <AdminProductCard
+              key={product.id}
+              product={product}
+              buttonText={product.banned ? "Unban" : "Ban"}
+              buttonColor={product.banned ? "green" : "red"}
+              onButtonClick={() =>
+                product.banned ? onUnban(product.id) : onBan(product.id)
+              }
+            />
+          ))}
+        </ProductGrid>
       </Flex>
     </Dashboard>
   );
