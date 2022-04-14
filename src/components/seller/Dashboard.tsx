@@ -105,7 +105,7 @@ const Home: NextPage<{ children: React.ReactChild }> = ({ children }) => {
               </NextLink>
               <NextLink href="/seller/orders" passHref>
                 <SidebarLink icon={<IoCart />} disabled={!seller?.approved}>
-                  My Orders
+                  Minhas ordens
                 </SidebarLink>
               </NextLink>
             </Stack>

@@ -218,7 +218,7 @@ const ProfilePage: React.FC = () => {
             fontWeight="bold"
             isLoading={updatingUserData}
           >
-            Update profile data
+            Atualizar dados de perfil
           </Button>
         </Form>
       )}
@@ -307,17 +307,13 @@ const ProfilePage: React.FC = () => {
           )}
         </Stack>
         <Stack spacing="6">
-          <Heading size="md" as="h2">
-            Ação perigosa!
-          </Heading>
           <Container padding="0" lineHeight="tall">
             <Heading size="base" as="h3">
               Deletar Conta
             </Heading>
             <Text>
               Uma vez excluída, você não poderá fazer login. Para reativar a
-              conta, você terá que se registrar novamente usando o mesmo ID de
-              e-mail
+              conta, você terá que se registrar novamente!
             </Text>
             {showDeleteForm ? (
               <Container mt="8" maxWidth="40ch" padding="0">
@@ -344,7 +340,7 @@ const ProfilePage: React.FC = () => {
                 isLoading={requestDeleteUser}
                 onClick={requestDelete}
               >
-                Request to Delete Account
+                Requisitar a deleção da conta
               </Button>
             )}
           </Container>

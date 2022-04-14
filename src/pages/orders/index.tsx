@@ -52,7 +52,7 @@ const BuyerOrders: React.FC = () => {
     <Page>
       <Box overflowY="auto" padding="2">
         <Heading size="lg" fontWeight="extrabold" mb="10">
-          My Orders
+          Minhas ordens
         </Heading>
         <Stack direction="column">
           {!orders ? (

@@ -44,7 +44,7 @@ const SellerOrders: React.FC = () => {
         maxWidth="100vw"
       >
         <Heading size="lg" fontWeight="extrabold" mb="6">
-          My Orders
+          Minhas Ordens
         </Heading>
         {!orders ? (
           <Spinner
