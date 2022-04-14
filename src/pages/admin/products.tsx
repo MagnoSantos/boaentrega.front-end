@@ -1,4 +1,5 @@
 import { Flex, Heading, Spinner, Text, useToast } from "@chakra-ui/react";
+import router from "next/router";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import api from "services/api/backend";
@@ -18,22 +19,37 @@ const Products: React.FC = () => {
     });
   }, []);
   const toast = useToast();
+
   const onBan = async (productId: string) => {
-    const res = await fetcher(`products/${productId}/ban`, "POST", {});
-    if (res.error) {
-      toastWrapper(toast, res.error, "Error", res.error);
-    } else {
-      toastWrapper(toast, undefined, "Info", "Banned");
-    }
+    api.post(`commodities/${productId}/ban`).then(async (res) => {
+      if (res.data.error) {
+        toastWrapper(toast, res.data.error, "Error", res.data.error);
+        await sleep(2500);
+        router.reload();
+      } else {
+        toastWrapper(toast, undefined, "Atenção!", "Produto banido!");
+        await sleep(2500);
+        router.reload();
+      }
+    });
   };
 
+  async function sleep(msec: number | undefined) {
+    return new Promise((resolve) => setTimeout(resolve, msec));
+  }
+
   const onUnban = async (productId: string) => {
-    const res = await fetcher(`products/${productId}/unban`, "POST", {});
-    if (res.error) {
-      toastWrapper(toast, res.error, "Error", res.error);
-    } else {
-      toastWrapper(toast, undefined, "Info", "Unbanned");
-    }
+    api.post(`commodities/${productId}/unban`).then(async (res) => {
+      if (res.data.error) {
+        toastWrapper(toast, res.data.error, "Error", res.data.error);
+        await sleep(2500);
+        router.reload();
+      } else {
+        toastWrapper(toast, undefined, "Atenção!", "Produto banido!");
+        await sleep(2500);
+        router.reload();
+      }
+    });
   };
 
   return (
