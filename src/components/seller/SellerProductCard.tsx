@@ -93,7 +93,7 @@ export const SellerProductCard = (props: Props) => {
               {name}
               {banned ? (
                 <Badge ml="2" colorScheme="red" flexShrink={0}>
-                  {`Banned`}
+                  {`Banido`}
                 </Badge>
               ) : (
                 <></>
