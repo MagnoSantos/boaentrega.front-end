@@ -61,11 +61,25 @@ export interface User {
   tokens?: any[];
 }
 
+export interface UserTest {
+  id: string;
+  name: string;
+  email: string;
+  banned: boolean,
+}
+
 export interface Seller {
   id: string;
   approved: boolean;
   approvalDocument?: string;
   user: User;
+  products?: Product[];
+}
+
+export interface SellerUser {
+  id: string;
+  approved: boolean;
+  user: UserTest;
   products?: Product[];
 }
 

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "123",
+    "approved": true,
+    "user": {
+      "id": "456",
+      "name": "Luiz",
+      "email": "lluiz.omg@gmail.com",
+      "banned": false
+    },
+    "products": [
+      {
+        "id": "131415",
+        "name": "TV A CABO",
+        "description": "pqp",
+        "price": 1000,
+        "seller": {
+          "id": "202122",
+          "user": {
+            "name": "Tavin"
+          }
+        },
+        "banned": false,
+        "images": [
+          {
+            "id": "303132",
+            "path": "www.google.com",
+            "productId": "404142"
+          }
+        ],
+        "category": {
+          "id": "606162",
+          "name": "Mendes"
+        }
+      }
+    ]
+  },
+  {
+    "id": "123",
+    "approved": true,
+    "user": {
+      "id": "456",
+      "name": "Magno",
+      "email": "lluiz.omg@gmail.com",
+      "banned": false
+    },
+    "products": [
+      {
+        "id": "131415",
+        "name": "TV A CABO",
+        "description": "pqp",
+        "price": 1000,
+        "seller": {
+          "id": "202122",
+          "user": {
+            "name": "Tavin"
+          }
+        },
+        "banned": false,
+        "images": [
+          {
+            "id": "303132",
+            "path": "www.google.com",
+            "productId": "404142"
+          }
+        ],
+        "category": {
+          "id": "606162",
+          "name": "Mendes"
+        }
+      }
+    ]
+  }
+]

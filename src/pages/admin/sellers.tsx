@@ -6,14 +6,16 @@ import { UserCard } from "~/components/admin/UserCard";
 import { ProductGrid } from "~/components/ProductGrid";
 import { fetcher } from "~/lib/api";
 import { toastWrapper } from "~/lib/toast";
-import { Seller } from "~/types";
+import { Seller, SellerUser } from "~/types";
+import sellersJson from "../../../sellers.json"
 
 const Sellers: React.FC = () => {
-  const {
-    data: sellers,
-    error,
-    mutate,
-  } = useSWR<{ data?: Seller[] }>("sellers", fetcher);
+  const data = sellersJson;
+  // const {
+  //   data: sellers,
+  //   error,
+  //   mutate,
+  // } = useSWR<{ data?: Seller[] }>("sellers", fetcher);
   const toast = useToast();
 
   const onBan = async (userId: string) => {
@@ -22,7 +24,7 @@ const Sellers: React.FC = () => {
       toastWrapper(toast, res.error, "Error", res.error);
     } else {
       toastWrapper(toast, undefined, "Info", "Banned");
-      mutate();
+      // mutate();
     }
   };
 
@@ -32,11 +34,11 @@ const Sellers: React.FC = () => {
       toastWrapper(toast, res.error, "Error", res.error);
     } else {
       toastWrapper(toast, undefined, "Info", "Unbanned");
-      mutate();
+      // mutate();
     }
   };
 
-  const getApprovedSellers = (sellers: Seller[]) =>
+  const getApprovedSellers = (sellers: SellerUser[]) =>
     sellers.filter(({ approved }) => approved);
 
   return (
@@ -51,19 +53,10 @@ const Sellers: React.FC = () => {
         <Heading size="lg" fontWeight="extrabold" mb="6">
           All Sellers
         </Heading>
-        {!sellers && !error && (
-          <Spinner
-            thickness="4px"
-            speed="0.65s"
-            emptyColor="gray.200"
-            color="purple.500"
-            size="xl"
-          />
-        )}
-        {!!sellers?.data &&
-          (getApprovedSellers(sellers?.data).length ? (
+        {!!data &&
+          (getApprovedSellers(data).length ? (
             <ProductGrid>
-              {getApprovedSellers(sellers?.data).map((seller) => (
+              {getApprovedSellers(data).map((seller) => (
                 <UserCard
                   key={seller.id}
                   name={seller.user.name}
@@ -81,9 +74,6 @@ const Sellers: React.FC = () => {
           ) : (
             <Text>No sellers found</Text>
           ))}
-        {(error || (sellers && !sellers.data)) && (
-          <Text>An error occured, please try again!</Text>
-        )}
       </Flex>
     </Dashboard>
   );

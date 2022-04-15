@@ -1,29 +1,49 @@
-{
-    "success": true,
-    "message": "string",
-    "data": [
+[
+  {
+    "id": "123",
+    "approved": true,
+    "approvalDocument": "approval",
+    "user": {
+      "id": "456",
+      "name": "Luiz",
+      "email": "lluiz.omg@gmail.com",
+      "address": "Rua Padre Feijo, 631 - AP 101 - SANTA RITA 1 - MONTES CLAROS",
+      "phoneNumber": "(38 988163911)",
+      "verified": true,
+      "banned": false,
+      "deleted": false,
+      "adminId": "789",
+      "sellerId": "101112",
+      "adminProfile": "0",
+      "buyerProfile": "00",
+      "sellerProfile": "000",
+      "tokens": ["", ""]
+    },
+    "products": [
       {
-        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "name": "string",
-        "description": "string",
-        "price": 0,
+        "id": "131415",
+        "name": "TV A CABO",
+        "description": "pqp",
+        "price": 1000,
         "seller": {
-          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "id": "202122",
           "user": {
-            "name": "string"
+            "name": "Tavin"
           }
         },
-        "banned": true,
+        "banned": false,
         "images": [
           {
-            "path": "string"
+            "id": "303132",
+            "path": "www.google.com",
+            "productId": "404142"
           }
         ],
         "category": {
-          "id": "string",
-          "name": "string"
+          "id": "606162",
+          "name": "Mendes"
         }
       }
-    ],
-    "csrfToken": "string"
+    ]
   }
+]

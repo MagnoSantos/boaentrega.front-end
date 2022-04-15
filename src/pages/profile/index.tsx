@@ -16,6 +16,7 @@ import { Field, Form, Formik } from "formik";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { HiClipboard } from "react-icons/hi";
+import api from "services/api/backend";
 import Page from "~/components/Page";
 import VirtualKeyboard from "~/components/VirtualKeyboard";
 import { useUser } from "~/hooks/useUser";
@@ -31,6 +32,7 @@ interface UserData {
 }
 
 const ProfilePage: React.FC = () => {
+  const [users, setUser] = useState();
   const { user, isLoading, mutate } = useUser();
   const router = useRouter();
   const toast = useToast();
@@ -58,24 +60,29 @@ const ProfilePage: React.FC = () => {
   const dataUser = userJson;
 
   const getUserData = async () => {
-    // if (!user) return;
-    // setLoadingUserData(true);
-    // const { data, error } = await fetcher<UserData>(`users/${user.id}`);
-    // setLoadingUserData(false);
-    // if (error) {
-    //   toastWrapper(toast, error, "An error occured");
-    //   return;
-    // }
-    setUserData(dataUser);
+    api
+      .get(`/users/7de0cf09-0f71-40f9-b883-08da1eee73a8/profile`)
+      .then((res) => {
+        console.log("res", res);
+        if (res.data.data) setUserData(res.data.data);
+      });
   };
 
   const updateUser = async (values: UserData) => {
     if (!user) return;
     setUpdatingUserData(true);
-    const { error } = await fetcher(`users/${user.id}`, "PATCH", values);
-    toastWrapper(toast, error, "Success", "Profile updated!");
-    setUpdatingUserData(false);
-    if (!error) mutate();
+    api
+      .patch(`users/7de0cf09-0f71-40f9-b883-08da1eee73a8/profile`, values)
+      .then(async (response) => {
+        toastWrapper(
+          toast,
+          response.data.sucess,
+          "Sucesso",
+          "Perfil Atualizado!"
+        );
+        setUpdatingUserData(false);
+        if (!response.data.sucess) mutate();
+      });
   };
 
   const requestDelete = async () => {
@@ -153,8 +160,6 @@ const ProfilePage: React.FC = () => {
               name="phoneNumber"
               validate={(value: string) => {
                 if (!value) return "Obrigatório";
-                if (value.trim().length !== 10 || !/\d*/.test(value.trim()))
-                  return "Phone number should be 10 digits long";
               }}
             >
               {({ field, form }: any) => (
@@ -315,34 +320,6 @@ const ProfilePage: React.FC = () => {
               Uma vez excluída, você não poderá fazer login. Para reativar a
               conta, você terá que se registrar novamente!
             </Text>
-            {showDeleteForm ? (
-              <Container mt="8" maxWidth="40ch" padding="0">
-                <Stack direction="column" spacing="8">
-                  <Text>
-                    The OTP token must be either pasted using the paste button
-                    or typed down using the virtual keyboard.
-                  </Text>
-                  <DeleteForm />
-                  <VirtualKeyboard
-                    onChange={setOtpValue}
-                    keyboardRef={keyboardRef}
-                  />
-                </Stack>
-              </Container>
-            ) : (
-              <Button
-                size="lg"
-                mt="5"
-                w="full"
-                colorScheme="red"
-                fontSize="md"
-                fontWeight="bold"
-                isLoading={requestDeleteUser}
-                onClick={requestDelete}
-              >
-                Requisitar a deleção da conta
-              </Button>
-            )}
           </Container>
         </Stack>
       </Stack>
