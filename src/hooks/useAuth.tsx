@@ -1,4 +1,5 @@
 import { useToast } from "@chakra-ui/react";
+import router from "next/router";
 import { useState } from "react";
 import api from "services/api/backend";
 import { fetcher } from "~/lib/api";
@@ -12,7 +13,6 @@ export const useAuth = () => {
   const [responseSucess, setResponseSucess] = useState(true);
 
   async function signUp(values: SignUpData): Promise<boolean> {
-    if (user) return false;
     const data = {
       name: values.fullName,
       email: values.email,
@@ -20,20 +20,18 @@ export const useAuth = () => {
     };
 
     api.post("/auth/register", data).then(async (response) => {
-      toastWrapper(
-        toast,
-        response.data.sucess,
-        "Sucesso",
-        "Conta criada"
-      );
+      toastWrapper(toast, response.data.sucess, "Sucesso", "Conta criada");
+
       setResponseSucess(response.data.sucess);
+
+      router.push("/auth/login");
+
       return !response.data.sucess;
     });
     return !responseSucess;
   }
 
   async function login(values: LoginData): Promise<boolean> {
-    if (user) return false;
     const data = {
       name: "",
       email: values.email,
@@ -46,17 +44,43 @@ export const useAuth = () => {
         "Sucesso",
         "Login realizado com sucesso"
       );
-      mutate(response.data);
-      setResponseSucess(response.data.sucess);
+      console.log(response.data.data.id);
+      localStorage.setItem("id", response.data.data.id);
+      localStorage.setItem("name", response.data.data.name);
+      localStorage.setItem("email", response.data.data.email);
+      localStorage.setItem("address", response.data.data.address);
+      localStorage.setItem("phoneNumber", response.data.data.phoneNumber);
+      localStorage.setItem("verified", response.data.data.verified);
+      localStorage.setItem("admin", response.data.data.admin);
+      setResponseSucess(response.data.data.sucess);
       return !response.data.sucess;
     });
     return !responseSucess;
   }
 
+  const objectEmptyUser = {
+    data: {
+      id: "",
+      name: "",
+      email: "",
+      address: "",
+      phoneNumber: "",
+      verified: true,
+      admin: false,
+    },
+  };
+
   async function logout() {
     if (!user) return;
-    const { data, error } = await fetcher("auth/logout");
-    toastWrapper(toast, error, "Sucesso", "Saiu com suceso!");
+    localStorage.setItem("id", "");
+    localStorage.setItem("name", "");
+    localStorage.setItem("email", "");
+    localStorage.setItem("address", "");
+    localStorage.setItem("phoneNumber", "");
+    localStorage.setItem("verified", "");
+    localStorage.setItem("admin", "");
+    toastWrapper(toast, "", "Sucesso", "Logout efetuado!");
+    router.push("/auth/login");
     mutate();
   }
 

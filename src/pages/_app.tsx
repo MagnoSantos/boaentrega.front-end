@@ -20,14 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ChakraProvider>
         <Flex minH="100vh" direction="column">
           <Header />
-          {!pathname.startsWith("/auth/") &&
-          !isLoading &&
-          user &&
-          !user.verified ? (
-            <VerifyEmail user={user} />
-          ) : (
-            <Component {...pageProps} />
-          )}
+          <Component {...pageProps} />
         </Flex>
       </ChakraProvider>
     </>

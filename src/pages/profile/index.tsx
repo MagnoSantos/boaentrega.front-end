@@ -18,11 +18,9 @@ import { useEffect, useRef, useState } from "react";
 import { HiClipboard } from "react-icons/hi";
 import api from "services/api/backend";
 import Page from "~/components/Page";
-import VirtualKeyboard from "~/components/VirtualKeyboard";
 import { useUser } from "~/hooks/useUser";
 import { fetcher } from "~/lib/api";
 import { toastWrapper } from "~/lib/toast";
-import userJson from "../../../userProfile.json";
 
 interface UserData {
   id: string;
@@ -55,9 +53,7 @@ const ProfilePage: React.FC = () => {
       return;
     }
     getUserData();
-  }, [user, isLoading]);
-
-  const dataUser = userJson;
+  }, []);
 
   const getUserData = async () => {
     api.get(`/users/${user?.id}/profile`).then((res) => {
@@ -69,7 +65,7 @@ const ProfilePage: React.FC = () => {
   const updateUser = async (values: UserData) => {
     if (!user) return;
     setUpdatingUserData(true);
-    api.patch(`users/${user.id}/profile`, values).then(async (response) => {
+    await api.patch(`users/${user.id}/profile`, values).then(async (response) => {
       toastWrapper(
         toast,
         response.data.sucess,
@@ -77,8 +73,8 @@ const ProfilePage: React.FC = () => {
         "Perfil Atualizado!"
       );
       setUpdatingUserData(false);
-      if (!response.data.sucess) mutate();
     });
+    router.reload();
   };
 
   const requestDelete = async () => {
