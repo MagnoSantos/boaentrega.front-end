@@ -45,8 +45,8 @@ const ForgotPassword: React.FC = () => {
     toastWrapper(
       toast,
       error,
-      "Email sent!",
-      "An OTP has been sent to your email. Please do not share it with anyone."
+      "E-mail enviado",
+      "Um OTP foi enviado ao seu e-mail. Por favor não compartilhe com outra pessoa!"
     );
   };
 
@@ -61,8 +61,8 @@ const ForgotPassword: React.FC = () => {
     toastWrapper(
       toast,
       error,
-      "Password updated!",
-      "Login to your account using your new password"
+      "Senha atualizada",
+      "Entre na sua conta utilizando sua nova senha!"
     );
     if (!error) router.push("/auth/login");
   };
@@ -79,7 +79,7 @@ const ForgotPassword: React.FC = () => {
                   isInvalid={form.errors.email && form.touched.email}
                 >
                   <FormLabel srOnly htmlFor="email">
-                    Email address
+                    Email
                   </FormLabel>
                   <Input
                     size="lg"
@@ -107,7 +107,7 @@ const ForgotPassword: React.FC = () => {
             fontWeight="bold"
             isLoading={loading}
           >
-            Send OTP to email
+            Enviar OTP ao e-mail
           </Button>
         </Form>
       )}
@@ -170,7 +170,7 @@ const ForgotPassword: React.FC = () => {
                   isInvalid={form.errors.password && form.touched.password}
                 >
                   <FormLabel srOnly htmlFor="password">
-                    New password
+                    Nova senha
                   </FormLabel>
                   <Input
                     size="lg"
@@ -199,7 +199,7 @@ const ForgotPassword: React.FC = () => {
             isLoading={loading}
             disabled={otpValue.length === 0}
           >
-            Update password
+            Atualizar senha
           </Button>
         </Form>
       )}
@@ -214,8 +214,7 @@ const ForgotPassword: React.FC = () => {
           {showUpdateForm ? (
             <Stack direction="column" spacing="8">
               <Text>
-                The OTP token must be either pasted using the paste button or
-                typed down using the virtual keyboard.
+                O token deve ser colado usando o botão coloar ou usando o teclado virtual.
               </Text>
               <UpdatePasswordForm />
               <VirtualKeyboard

@@ -53,8 +53,8 @@ export default function Signup({}: Props): ReactElement {
       toastWrapper(
         toast,
         undefined,
-        "Email verified!",
-        "Your email ID has been verified, please login"
+        "Email verificado!",
+        "Seu e-mail foi verificado, por favor realize login"
       );
     }
   }, [router.query, user]);
@@ -69,12 +69,12 @@ export default function Signup({}: Props): ReactElement {
             fontWeight="extrabold"
             letterSpacing="tight"
           >
-            Login to your account
+            Logar em sua conta
           </Heading>
           <Text mt="3" color={mode("gray.600", "gray.400")} fontWeight="medium">
-            Need an account?{" "}
+            Precisa de uma conta?{" "}
             <NextLink passHref href="/auth/signup">
-              <Link color="purple.600">Sign up!</Link>
+              <Link color="purple.600">Inscrever-se!</Link>
             </NextLink>
           </Text>
         </Box>
@@ -89,7 +89,7 @@ export default function Signup({}: Props): ReactElement {
                       isInvalid={form.errors.email && form.touched.email}
                     >
                       <FormLabel srOnly htmlFor="email">
-                        Email address
+                        Email
                       </FormLabel>
                       <Input
                         size="lg"
@@ -97,7 +97,7 @@ export default function Signup({}: Props): ReactElement {
                         type="email"
                         autoComplete="email"
                         required
-                        placeholder="Email address"
+                        placeholder="Email"
                         bg={mode("white", "gray.700")}
                         fontSize="md"
                         roundedBottom="0"
@@ -114,7 +114,7 @@ export default function Signup({}: Props): ReactElement {
                       isInvalid={form.errors.password && form.touched.password}
                     >
                       <FormLabel srOnly htmlFor="password">
-                        Password
+                        Senha
                       </FormLabel>
                       <InputGroup size="md">
                         <Input
@@ -126,7 +126,7 @@ export default function Signup({}: Props): ReactElement {
                           bg={mode("white", "gray.700")}
                           fontSize="md"
                           roundedTop="0"
-                          placeholder="Password"
+                          placeholder="Senha"
                           {...field}
                         />
                         <InputRightElement width="3.5rem">
@@ -153,7 +153,7 @@ export default function Signup({}: Props): ReactElement {
                   color="red.600"
                   href="/auth/forgot-password"
                 >
-                  Forgot password?
+                  Esqueceu a senha?
                 </Link>
               </Flex>
               <Button

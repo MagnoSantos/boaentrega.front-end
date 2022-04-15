@@ -20,11 +20,11 @@ const validate = {
         value
       )
     )
-      return "Invalid password. Password must have between 12-22 characters, at least one uppercase letter, one lowercase letter, one number and one special character.";
+      return "Senha inválida. A senha deve conter 12 a 22 caracteres, pelo menos uma letra maiúscula, uma letra minúscula, um número e um caracter especial.";
   },
   confirmPassword: (value: string, password: string) => {
     if (!value) return "Obrigatorio";
-    if (password !== value) return "Passwords don't match.";
+    if (password !== value) return "Senhas não conferem.";
   },
   required: (value: string) => {
     if (!value) return "Obrigatório";
@@ -34,7 +34,7 @@ const validate = {
     if (!value) {
       error = "Obrigatório";
     } else if (isNaN(parseInt(value))) {
-      error = "Price must be a number";
+      error = "Preço precisa ser um número!";
     }
     return error;
   },

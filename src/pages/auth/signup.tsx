@@ -34,7 +34,7 @@ export default function Signup({}: Props): ReactElement {
 
   const onSubmit = async (values: SignUpData) => {
     if (!privacyChecked) {
-      toastWrapper(toast, "You must agree to our privacy policy.", "", "error");
+      toastWrapper(toast, "Você precisa aceitar a política de privacidade", "", "error");
       return;
     }
     setLoading(true);
@@ -83,7 +83,7 @@ export default function Signup({}: Props): ReactElement {
                       isInvalid={form.errors.fullName && form.touched.fullName}
                     >
                       <FormLabel srOnly htmlFor="fullName">
-                        Full Name
+                        Nome completo
                       </FormLabel>
                       <Input
                         size="lg"
@@ -110,7 +110,7 @@ export default function Signup({}: Props): ReactElement {
                       isInvalid={form.errors.email && form.touched.email}
                     >
                       <FormLabel srOnly htmlFor="email">
-                        Full Name
+                        Nome completo
                       </FormLabel>
                       <Input
                         size="lg"
@@ -135,7 +135,7 @@ export default function Signup({}: Props): ReactElement {
                       isInvalid={form.errors.password && form.touched.password}
                     >
                       <FormLabel srOnly htmlFor="password">
-                        Full Name
+                        Nome completo
                       </FormLabel>
                       <Input
                         size="lg"
@@ -170,7 +170,7 @@ export default function Signup({}: Props): ReactElement {
                       }
                     >
                       <FormLabel srOnly htmlFor="confirmPassword">
-                        Full Name
+                        Nome completo
                       </FormLabel>
                       <Input
                         size="lg"
@@ -197,7 +197,7 @@ export default function Signup({}: Props): ReactElement {
                 onChange={(e) => setPrivacyChecked(e.target.checked)}
                 marginTop={4}
               >
-                I agree to Ecstacy's{" "}
+                Eu aceito a política de privacidade Boa Entrega{" "}
                 <Link href="/privacy-policy" color="purple.500">
                   privacy policy.
                 </Link>
@@ -212,7 +212,7 @@ export default function Signup({}: Props): ReactElement {
                 fontWeight="bold"
                 isLoading={loading}
               >
-                Sign up
+                Inscrever
               </Button>
             </Form>
           )}
