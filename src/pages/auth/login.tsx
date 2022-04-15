@@ -166,7 +166,7 @@ export default function Signup({}: Props): ReactElement {
                 fontWeight="bold"
                 isLoading={loading}
               >
-                Login
+                Logar
               </Button>
             </Form>
           )}

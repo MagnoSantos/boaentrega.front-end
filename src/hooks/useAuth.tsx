@@ -23,8 +23,8 @@ export const useAuth = () => {
       toastWrapper(
         toast,
         response.data.sucess,
-        "Success",
-        "Account created, you may now log in"
+        "Sucesso",
+        "Conta criada"
       );
       setResponseSucess(response.data.sucess);
       return !response.data.sucess;
@@ -43,8 +43,8 @@ export const useAuth = () => {
       toastWrapper(
         toast,
         response.data.sucess,
-        "Success",
-        "Successfully logged in"
+        "Sucesso",
+        "Login realizado com sucesso"
       );
       mutate(response.data);
       setResponseSucess(response.data.sucess);
@@ -56,7 +56,7 @@ export const useAuth = () => {
   async function logout() {
     if (!user) return;
     const { data, error } = await fetcher("auth/logout");
-    toastWrapper(toast, error, "Success", "Successfully logged out");
+    toastWrapper(toast, error, "Sucesso", "Saiu com suceso!");
     mutate();
   }
 

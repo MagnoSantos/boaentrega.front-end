@@ -20,8 +20,7 @@ export const fetcher = async <T = any>(
 ): Promise<{ data?: T | undefined; error?: string }> => {
   const defaultOptions: RequestInit = {
     method,
-    headers: { "csrf-token": csrfToken },
-    credentials: "include",
+    headers: { "csrf-token": csrfToken, 'Access-Control-Allow-Origin':'*' },
   };
 
   if (method !== "GET" && body) {

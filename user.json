@@ -1,11 +1,9 @@
 {
-  "data": {
-    "id": "b189c817-6cb3-429a-9d75-ab20a260ff43",
-    "name": "Luiz Gregorio",
-    "email": "lluiz.omg@gmail.com",
-    "verified": true,
-    "address": "Rua Padre Feijo, 631 - AP 101 - SANTA RITA 1 - MONTES CLAROS",
-    "phoneNumber": "(38 988163911)",
-    "admin": true
-  }
+  "id": "73e3217f-faa7-4f7d-84c2-c273d215007d",
+  "name": "jack",
+  "email": "jack@gmail.com",
+  "address": "Padre Feijo 111",
+  "phoneNumber": "38988163911",
+  "verified": true,
+  "admin": false
 }

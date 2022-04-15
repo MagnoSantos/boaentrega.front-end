@@ -1,6 +1,5 @@
 import useSWR from "swr";
 import { fetcher } from "~/lib/api";
-import userJson from "../../user.json";
 
 export const useUser = () => {
   const {
@@ -18,7 +17,9 @@ export const useUser = () => {
       phoneNumber: string;
       admin: boolean;
     };
-  }>(userJson);
+  }>("auth/73e3217f-faa7-4f7d-84c2-c273d215007d/user", fetcher, {
+    revalidateOnFocus: false
+  });
 
   console.log("hookData", user?.data);
 
