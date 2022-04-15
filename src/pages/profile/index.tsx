@@ -311,17 +311,6 @@ const ProfilePage: React.FC = () => {
             </Stack>
           )}
         </Stack>
-        <Stack spacing="6">
-          <Container padding="0" lineHeight="tall">
-            <Heading size="base" as="h3">
-              Deletar Conta
-            </Heading>
-            <Text>
-              Uma vez excluída, você não poderá fazer login. Para reativar a
-              conta, você terá que se registrar novamente!
-            </Text>
-          </Container>
-        </Stack>
       </Stack>
     </Page>
   );
