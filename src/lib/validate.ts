@@ -11,14 +11,12 @@ const validate = {
       )
     )
       return "Invalid email address";
-    if (!value.endsWith("@iiitd.ac.in"))
-      return "Only IIIT Delhi emails allowed!";
     if (value.length > 320) return "Must be 320 characters or less";
   },
   password: (value: string) => {
     if (!value) return "Obrigatório";
     if (
-      !/^(?=[^A-Z\s]*[A-Z])(?=[^a-z\s]*[a-z])(?=[^\d\s]*\d)(?=\w*[\W_])\S{12,22}$/.test(
+      !/^(?=[^A-Z\s]*[A-Z])(?=[^a-z\s]*[a-z])(?=[^\d\s]*\d)(?=\w*[\W_])\S{4,22}$/.test(
         value
       )
     )

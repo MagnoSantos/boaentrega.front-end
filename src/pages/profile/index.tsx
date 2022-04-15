@@ -60,29 +60,25 @@ const ProfilePage: React.FC = () => {
   const dataUser = userJson;
 
   const getUserData = async () => {
-    api
-      .get(`/users/7de0cf09-0f71-40f9-b883-08da1eee73a8/profile`)
-      .then((res) => {
-        console.log("res", res);
-        if (res.data.data) setUserData(res.data.data);
-      });
+    api.get(`/users/${user?.id}/profile`).then((res) => {
+      console.log("res", res);
+      if (res.data.data) setUserData(res.data.data);
+    });
   };
 
   const updateUser = async (values: UserData) => {
     if (!user) return;
     setUpdatingUserData(true);
-    api
-      .patch(`users/7de0cf09-0f71-40f9-b883-08da1eee73a8/profile`, values)
-      .then(async (response) => {
-        toastWrapper(
-          toast,
-          response.data.sucess,
-          "Sucesso",
-          "Perfil Atualizado!"
-        );
-        setUpdatingUserData(false);
-        if (!response.data.sucess) mutate();
-      });
+    api.patch(`users/${user.id}/profile`, values).then(async (response) => {
+      toastWrapper(
+        toast,
+        response.data.sucess,
+        "Sucesso",
+        "Perfil Atualizado!"
+      );
+      setUpdatingUserData(false);
+      if (!response.data.sucess) mutate();
+    });
   };
 
   const requestDelete = async () => {

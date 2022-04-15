@@ -30,7 +30,7 @@ interface Props {}
 const Header = (props: Props) => {
   const [loggingOut, setLoggingOut] = useState<boolean>(false);
   const { user, isLoading } = useUser();
-  const [searchvalue, setValue] = React.useState("");
+  const [searchvalue, setValue] = useState("");
   const { logout } = useAuth();
   const router = useRouter();
   const toast = useToast();
@@ -47,6 +47,7 @@ const Header = (props: Props) => {
       );
       localStorage.setItem("ecstacy-cookie-policy", "agreed");
     }
+    console.log("headerUser", user);
   }, []);
 
   const onLogout = async () => {
@@ -87,7 +88,6 @@ const Header = (props: Props) => {
             spacing="5"
             alignItems="center"
             justifyContent="space-between"
-
           >
             <NextLink href="/" passHref>
               <Link fontSize="md" color="gray.700" fontWeight="medium">
@@ -96,7 +96,7 @@ const Header = (props: Props) => {
             </NextLink>
             <NextLink href="/seller/dashboards" passHref>
               <Link fontSize="md" color="gray.700" fontWeight="medium">
-               Vendedor
+                Vendedor
               </Link>
             </NextLink>
             {user ? (
@@ -111,7 +111,7 @@ const Header = (props: Props) => {
                 </Button>
                 <Menu>
                   <MenuButton>
-                    <Avatar size="sm" name={user.name} cursor="pointer"  />
+                    <Avatar size="sm" name={user.name} cursor="pointer" />
                   </MenuButton>
                   <MenuList>
                     <MenuItem fontSize="sm">
