@@ -30,7 +30,7 @@ const Sellers: React.FC = () => {
         pt={{ md: 1, base: 1 }}
       >
         <Heading size="lg" fontWeight="extrabold" mb="6">
-          All Sellers
+          Todos os usuários
         </Heading>
         {!!sellersData &&
           (getApprovedSellers(sellersData).length ? (
@@ -44,7 +44,7 @@ const Sellers: React.FC = () => {
               ))}
             </ProductGrid>
           ) : (
-            <Text>No sellers found</Text>
+            <Text>Nenhum usuário encontrado!</Text>
           ))}
       </Flex>
     </Dashboard>
