@@ -96,10 +96,10 @@ const Header = (props: Props) => {
             </NextLink>
             <NextLink href="/seller/dashboards" passHref>
               <Link fontSize="md" color="gray.700" fontWeight="medium">
-              Área do Vendedor
+                Área do Vendedor
               </Link>
             </NextLink>
-            {user ? (
+            {user.name?.length !== 0 ? (
               <>
                 <Button
                   colorScheme="red"
