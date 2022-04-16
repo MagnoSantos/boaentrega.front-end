@@ -4,7 +4,7 @@ import { useEffect } from "react";
 const AdminIndex: React.FC = () => {
   const router = useRouter();
   useEffect(() => {
-    router.replace("/admin/approval-requests");
+    router.replace("/admin/sellers");
   }, []);
   return <></>;
 };
