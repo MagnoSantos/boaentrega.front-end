@@ -21,10 +21,10 @@ const Dashboards = ({}: Props) => {
               <AnalyticsChart />
             </Box>
             <Box p={["6", "8"]} bg="gray.400" borderRadius={8} pb="4">
-            <Text fontSize="lg" mb="4" color={"grey.800"}>
+              <Text fontSize="lg" mb="4" color={"grey.800"}>
                 Porcentagem de produtos por categoria
               </Text>
-            <DonutChart/>
+              <DonutChart />
             </Box>
           </SimpleGrid>
         </Flex>

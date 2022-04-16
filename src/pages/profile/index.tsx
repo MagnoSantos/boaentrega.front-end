@@ -65,15 +65,17 @@ const ProfilePage: React.FC = () => {
   const updateUser = async (values: UserData) => {
     if (!user) return;
     setUpdatingUserData(true);
-    await api.patch(`users/${user.id}/profile`, values).then(async (response) => {
-      toastWrapper(
-        toast,
-        response.data.sucess,
-        "Sucesso",
-        "Perfil Atualizado!"
-      );
-      setUpdatingUserData(false);
-    });
+    await api
+      .patch(`users/${user.id}/profile`, values)
+      .then(async (response) => {
+        toastWrapper(
+          toast,
+          response.data.sucess,
+          "Sucesso",
+          "Perfil Atualizado!"
+        );
+        setUpdatingUserData(false);
+      });
     router.reload();
   };
 

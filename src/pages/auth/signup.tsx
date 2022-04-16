@@ -34,7 +34,12 @@ export default function Signup({}: Props): ReactElement {
 
   const onSubmit = async (values: SignUpData) => {
     if (!privacyChecked) {
-      toastWrapper(toast, "Você precisa aceitar a política de privacidade", "", "error");
+      toastWrapper(
+        toast,
+        "Você precisa aceitar a política de privacidade",
+        "",
+        "error"
+      );
       return;
     }
     setLoading(true);

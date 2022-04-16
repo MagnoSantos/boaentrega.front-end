@@ -30,7 +30,6 @@ import { toastWrapper } from "~/lib/toast";
 import { PriceTag } from "../../components/PriceTag";
 import { Product } from "../../types";
 
-
 interface ProductProps {
   product: Product;
   rootProps?: StackProps;
@@ -39,7 +38,6 @@ interface ProductProps {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { data, error } = await fetcher(`commodities/${ctx.params?.productId}`);
-
 
   return {
     props: {

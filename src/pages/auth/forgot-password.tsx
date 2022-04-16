@@ -214,7 +214,8 @@ const ForgotPassword: React.FC = () => {
           {showUpdateForm ? (
             <Stack direction="column" spacing="8">
               <Text>
-                O token deve ser colado usando o botão coloar ou usando o teclado virtual.
+                O token deve ser colado usando o botão coloar ou usando o
+                teclado virtual.
               </Text>
               <UpdatePasswordForm />
               <VirtualKeyboard

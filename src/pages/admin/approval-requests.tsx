@@ -76,9 +76,7 @@ const ApprovalRequest: React.FC = () => {
           ) : (
             <Text>No pending seller approval requests</Text>
           ))}
-        {(error || (sellers && !sellers.data)) && (
-          <Text></Text>
-        )}
+        {(error || (sellers && !sellers.data)) && <Text></Text>}
       </Flex>
     </Dashboard>
   );

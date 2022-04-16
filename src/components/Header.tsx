@@ -102,7 +102,6 @@ const Header = (props: Props) => {
             {user.name?.length !== 0 ? (
               <>
                 <Button
-                  
                   colorScheme="red"
                   size="sm"
                   onClick={onLogout}

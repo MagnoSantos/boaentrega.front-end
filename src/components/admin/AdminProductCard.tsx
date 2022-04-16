@@ -59,7 +59,7 @@ export const AdminProductCard = (props: Props) => {
       <Stack align="center">
         <NextLink href={`/products/${product.id}`}>
           <Button colorScheme="purple" isFullWidth>
-          Ver Produto
+            Ver Produto
           </Button>
         </NextLink>
         <Button

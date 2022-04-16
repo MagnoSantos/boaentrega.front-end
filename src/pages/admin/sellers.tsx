@@ -1,12 +1,10 @@
-import { Flex, Heading, Text, useToast } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import api from "services/api/backend";
-import useSWR from "swr";
 import Dashboard from "~/components/admin/Dashboard";
 import { UserCard } from "~/components/admin/UserCard";
 import { ProductGrid } from "~/components/ProductGrid";
-import { fetcher } from "~/lib/api";
 import { SellerNewUser } from "~/types";
 
 const Sellers: React.FC = () => {

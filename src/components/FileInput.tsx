@@ -70,7 +70,7 @@ export const FileInput: React.FC<IProps> = (props) => {
       <VStack alignItems="start" spacing={5}>
         <Stack direction="row">
           <FormControl
-            // isInvalid={!!props.minFiles && files.length < props.minFiles}
+          // isInvalid={!!props.minFiles && files.length < props.minFiles}
           >
             {/* <Button type="button" size="sm" onClick={onClickHandler}>
               {props.allowMultipleFiles ? "Selecione as imagens" : "Selecione as imagen"}
