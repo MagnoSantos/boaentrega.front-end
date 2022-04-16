@@ -30,31 +30,13 @@ const EditProduct = ({ product }: Props) => {
     typeof window !== "undefined" ? localStorage.getItem("id") : null;
   const idSellerAux = idSeller?.toString();
   const [primeiraImagem, setValuePrimeiraImagem] = useState("");
-  const [segundaImagem, setValueSegundaImagem] = useState("");
-  const [terceiraImagem, setValueTerceiraImagem] = useState("");
-  const image = [
-    {
-      path: primeiraImagem,
-    },
-    {
-      path: segundaImagem,
-    },
-    {
-      path: terceiraImagem,
-    },
-  ];
+  const image = {
+    path: primeiraImagem,
+  };
 
   const handlePrimeiraImagemChange = (event: {
     target: { value: React.SetStateAction<string> };
   }) => setValuePrimeiraImagem(event.target.value);
-
-  const handleSegundaImagemChange = (event: {
-    target: { value: React.SetStateAction<string> };
-  }) => setValueSegundaImagem(event.target.value);
-
-  const handleTerceiraImagemChange = (event: {
-    target: { value: React.SetStateAction<string> };
-  }) => setValueTerceiraImagem(event.target.value);
 
   const [productData, setProducts] = useState<Product[]>();
   const [loading, setLoading] = useState<boolean>(false);
@@ -243,18 +225,6 @@ const EditProduct = ({ product }: Props) => {
                       value={primeiraImagem}
                       onChange={handlePrimeiraImagemChange}
                       placeholder="Insira a url da primeira imagem do produto"
-                      size="sm"
-                    />
-                    <Input
-                      value={segundaImagem}
-                      onChange={handleSegundaImagemChange}
-                      placeholder="Insira a url da segunda imagem do produto"
-                      size="sm"
-                    />
-                    <Input
-                      value={terceiraImagem}
-                      onChange={handleTerceiraImagemChange}
-                      placeholder="Insira a url da terceira imagem do produto"
                       size="sm"
                     />
                   </Stack>
