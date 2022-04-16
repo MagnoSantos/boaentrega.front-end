@@ -1,44 +1,23 @@
-import { Flex, Heading, Spinner, Text, useToast } from "@chakra-ui/react";
+import { Flex, Heading, Text, useToast } from "@chakra-ui/react";
 import * as React from "react";
+import { useEffect, useState } from "react";
+import api from "services/api/backend";
 import useSWR from "swr";
 import Dashboard from "~/components/admin/Dashboard";
 import { UserCard } from "~/components/admin/UserCard";
 import { ProductGrid } from "~/components/ProductGrid";
 import { fetcher } from "~/lib/api";
-import { toastWrapper } from "~/lib/toast";
-import { Seller, SellerUser } from "~/types";
-import sellersJson from "../../../sellers.json"
+import { SellerNewUser } from "~/types";
 
 const Sellers: React.FC = () => {
-  const data = sellersJson;
-  // const {
-  //   data: sellers,
-  //   error,
-  //   mutate,
-  // } = useSWR<{ data?: Seller[] }>("sellers", fetcher);
-  const toast = useToast();
+  const [sellersData, setSellersData] = useState<SellerNewUser[]>();
+  useEffect(() => {
+    api.get("sellers").then((res) => {
+      if (res.data.data) setSellersData(res.data.data);
+    });
+  }, []);
 
-  const onBan = async (userId: string) => {
-    const res = await fetcher(`users/${userId}/ban`, "POST", {});
-    if (res.error) {
-      toastWrapper(toast, res.error, "Error", res.error);
-    } else {
-      toastWrapper(toast, undefined, "Info", "Banned");
-      // mutate();
-    }
-  };
-
-  const onUnban = async (userId: string) => {
-    const res = await fetcher(`users/${userId}/unban`, "POST", {});
-    if (res.error) {
-      toastWrapper(toast, res.error, "Error", res.error);
-    } else {
-      toastWrapper(toast, undefined, "Info", "Unbanned");
-      // mutate();
-    }
-  };
-
-  const getApprovedSellers = (sellers: SellerUser[]) =>
+  const getApprovedSellers = (sellers: SellerNewUser[]) =>
     sellers.filter(({ approved }) => approved);
 
   return (
@@ -53,21 +32,14 @@ const Sellers: React.FC = () => {
         <Heading size="lg" fontWeight="extrabold" mb="6">
           All Sellers
         </Heading>
-        {!!data &&
-          (getApprovedSellers(data).length ? (
+        {!!sellersData &&
+          (getApprovedSellers(sellersData).length ? (
             <ProductGrid>
-              {getApprovedSellers(data).map((seller) => (
+              {getApprovedSellers(sellersData).map((seller) => (
                 <UserCard
                   key={seller.id}
                   name={seller.user.name}
                   email={seller.user.email}
-                  buttonText={seller.user.banned ? "Unban" : "Ban"}
-                  buttonColor={seller.user.banned ? "green" : "red"}
-                  onButtonClick={() => {
-                    seller.user.banned
-                      ? onUnban(seller.user.id)
-                      : onBan(seller.user.id);
-                  }}
                 />
               ))}
             </ProductGrid>

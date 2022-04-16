@@ -65,7 +65,12 @@ export interface UserTest {
   id: string;
   name: string;
   email: string;
-  banned: boolean,
+  banned: boolean;
+}
+
+export interface UserNewTest {
+  name: string;
+  email: string;
 }
 
 export interface Seller {
@@ -81,6 +86,12 @@ export interface SellerUser {
   approved: boolean;
   user: UserTest;
   products?: Product[];
+}
+
+export interface SellerNewUser {
+  id: string;
+  approved: boolean;
+  user: UserNewTest;
 }
 
 export interface SignUpData {

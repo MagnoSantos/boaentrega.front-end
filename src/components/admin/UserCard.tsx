@@ -1,20 +1,7 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  Stack,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Avatar, Box, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 import * as React from "react";
 
-export const UserCard = ({
-  name,
-  email,
-  buttonText,
-  onButtonClick,
-  buttonColor,
-}: any) => (
+export const UserCard = ({ name, email }: any) => (
   <Stack
     alignItems="center"
     rounded="md"
@@ -46,13 +33,5 @@ export const UserCard = ({
         {email}
       </Text>
     </Stack>
-    <Button
-      colorScheme={buttonColor}
-      variant="outline"
-      onClick={onButtonClick}
-      isFullWidth
-    >
-      {buttonText}
-    </Button>
   </Stack>
 );
