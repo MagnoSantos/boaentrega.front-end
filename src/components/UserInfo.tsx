@@ -8,9 +8,9 @@ import {
 import * as React from "react";
 
 interface UserInfoProps {
-  name: string;
-  image?: string;
-  email: string;
+  name: string | undefined;
+  image?: string | undefined;
+  email: string | undefined;
 }
 
 export const UserInfo = (props: UserInfoProps) => {
