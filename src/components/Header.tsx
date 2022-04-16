@@ -119,7 +119,7 @@ const Header = (props: Props) => {
                       <NextLink href="/profile">Perfil</NextLink>
                     </MenuItem>
                     <MenuItem fontSize="sm">
-                      <NextLink href="/orders">My Orders</NextLink>
+                      <NextLink href="/orders">Minhas ordens</NextLink>
                     </MenuItem>
                   </MenuList>
                 </Menu>
