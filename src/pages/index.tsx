@@ -33,9 +33,13 @@ const Home = (props: { products: Product[]; error: string }) => {
           Marketplace
         </Heading>
         <ProductGrid marginTop="10">
-          {props.products.map((product: Product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {props.products.map((product: Product) =>
+            !product.banned ? (
+              <ProductCard key={product.id} product={product} />
+            ) : (
+              ""
+            )
+          )}
         </ProductGrid>
       </Box>
     </Page>
