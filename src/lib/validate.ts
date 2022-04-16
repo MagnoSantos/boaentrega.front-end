@@ -20,7 +20,7 @@ const validate = {
         value
       )
     )
-      return "Senha inválida. A senha deve conter 12 a 22 caracteres, pelo menos uma letra maiúscula, uma letra minúscula, um número e um caracter especial.";
+      return "Senha inválida. A senha deve pelo menos 4 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caracter especial.";
   },
   confirmPassword: (value: string, password: string) => {
     if (!value) return "Obrigatorio";

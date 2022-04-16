@@ -7,7 +7,7 @@ export const Logo = () => {
   return (
     <Tooltip
       hasArrow
-      label="We know it's a typo!"
+      label="Melhor empresas de entrega! Nós sabemos 😘"
       bg="gray.100"
       color="gray.500"
     >
