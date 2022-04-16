@@ -41,8 +41,8 @@ const Header = (props: Props) => {
       toastWrapper(
         toast,
         undefined,
-        "Cookie Policy",
-        "By continuing to browse on this website, you agree to our use of cookies and our privacy policy to improve your browsing experience.",
+        "Política de cookies",
+        "Ao continuar acessando o site, você concorda com a política de cookies e de privacidade para melhor experiência.",
         true
       );
       localStorage.setItem("ecstacy-cookie-policy", "agreed");
