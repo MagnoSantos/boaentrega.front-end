@@ -11,11 +11,13 @@ interface Props {}
 
 const SellerProducts = ({}: Props) => {
   const [products, setProducts] = useState<Product[]>();
+  const idSeller =
+    typeof window !== "undefined" ? localStorage.getItem("id") : null;
+  const idSellerAux = idSeller?.toString();
   const { seller } = useSeller();
-  const idSeller = "82973833-2270-46dc-86ca-411c4b27a83c";
 
   useEffect(() => {
-    api.get(`commodities/seller/${idSeller}`).then((res) => {
+    api.get(`commodities/seller/${idSellerAux}`).then((res) => {
       console.log("resSeller", res);
       if (res.data.data) setProducts(res.data.data);
     });

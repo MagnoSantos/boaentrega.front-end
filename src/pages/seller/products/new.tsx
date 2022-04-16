@@ -23,6 +23,9 @@ import { toastWrapper } from "~/lib/toast";
 import validate from "~/lib/validate";
 
 const NewProduct: React.FC = () => {
+  const idSeller =
+    typeof window !== "undefined" ? localStorage.getItem("id") : null;
+  const idSellerAux = idSeller?.toString();
   const [loading, setLoading] = useState<boolean>(false);
   const [primeiraImagem, setValuePrimeiraImagem] = useState("");
   const image = {
@@ -33,6 +36,7 @@ const NewProduct: React.FC = () => {
     target: { value: React.SetStateAction<string> };
   }) => setValuePrimeiraImagem(event.target.value);
   const router = useRouter();
+
   const toast = useToast();
   const submit = async (
     formData: any,
@@ -41,10 +45,11 @@ const NewProduct: React.FC = () => {
       description: string;
       price: string;
       category: string;
+      idSeller: string | undefined;
     }>
   ) => {
-    console.log("formData", formData);
     api.post("commodities", props.values).then(async (response) => {
+      console.log("PLAYSTATION", props.values);
       console.log("response", response.data.data.id);
 
       if (response.data.success) {
@@ -84,6 +89,7 @@ const NewProduct: React.FC = () => {
               description: "",
               price: "",
               category: "",
+              idSeller: idSellerAux,
             }}
             onSubmit={() => {}}
           >
