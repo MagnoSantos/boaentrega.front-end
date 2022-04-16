@@ -85,7 +85,7 @@ const Header = (props: Props) => {
             />
           </InputGroup>
           <HStack
-            spacing="5"
+            spacing="10"
             alignItems="center"
             justifyContent="space-between"
           >
@@ -102,6 +102,7 @@ const Header = (props: Props) => {
             {user.name?.length !== 0 ? (
               <>
                 <Button
+                  
                   colorScheme="red"
                   size="sm"
                   onClick={onLogout}
@@ -111,7 +112,7 @@ const Header = (props: Props) => {
                 </Button>
                 <Menu>
                   <MenuButton>
-                    <Avatar size="sm" name={user.name} cursor="pointer" />
+                    <Avatar size="md" name={user.name} cursor="pointer" />
                   </MenuButton>
                   <MenuList>
                     <MenuItem fontSize="sm">
