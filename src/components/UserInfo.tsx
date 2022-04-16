@@ -8,7 +8,7 @@ import {
 import * as React from "react";
 
 interface UserInfoProps {
-  name: string;
+  name: string | undefined;
   image?: string;
   email: string;
 }

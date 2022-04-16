@@ -1,34 +1,5 @@
 import useSWR from "swr";
-
-function salvarDadosNaMemoria() {
-  const id = typeof window !== "undefined" ? localStorage.getItem("id") : null;
-  const name =
-    typeof window !== "undefined" ? localStorage.getItem("name") : null;
-  const email =
-    typeof window !== "undefined" ? localStorage.getItem("email") : null;
-  const address =
-    typeof window !== "undefined" ? localStorage.getItem("address") : null;
-  const phoneNumber =
-    typeof window !== "undefined" ? localStorage.getItem("phoneNumber") : null;
-  const verified =
-    typeof window !== "undefined" ? localStorage.getItem("verified") : null;
-  const admin =
-    typeof window !== "undefined" ? localStorage.getItem("admin") : null;
-
-  const objectCacheUser = {
-    data: {
-      id: id,
-      name: name,
-      email: email,
-      address: address,
-      phoneNumber: phoneNumber,
-      verified: verified,
-      admin: admin,
-    },
-  };
-
-  return objectCacheUser;
-}
+import { fetcher } from "~/lib/api";
 
 export const useUser = () => {
   const {
@@ -46,15 +17,15 @@ export const useUser = () => {
       phoneNumber: string;
       admin: boolean;
     };
-  }>("");
-
-  var userCache = salvarDadosNaMemoria();
+  }>("auth/73e3217f-faa7-4f7d-84c2-c273d215007d/user", fetcher, {
+    revalidateOnFocus: false
+  });
 
   console.log("hookData", user?.data);
 
   return {
-    user: userCache?.data,
-    isLoading: false,
+    user: user?.data,
+    isLoading: (!user && !error) || isValidating,
     error,
     mutate,
   };

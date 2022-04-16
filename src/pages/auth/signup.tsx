@@ -53,12 +53,12 @@ export default function Signup({}: Props): ReactElement {
             fontWeight="extrabold"
             letterSpacing="tight"
           >
-            Create an account!
+            Criar uma conta
           </Heading>
           <Text mt="3" color={mode("gray.600", "gray.400")} fontWeight="medium">
-            Already have one?{" "}
+            Já tem uma conta?{" "}
             <NextLink href="/auth/login" passHref>
-              <Link color="purple.600">Login!</Link>
+              <Link color="purple.600">Logar!</Link>
             </NextLink>
           </Text>
         </Box>
@@ -91,7 +91,7 @@ export default function Signup({}: Props): ReactElement {
                         type="name"
                         autoComplete="name"
                         required
-                        placeholder="Full Name"
+                        placeholder="Nome completo"
                         bg={mode("white", "gray.700")}
                         fontSize="md"
                         roundedBottom="0"
@@ -118,7 +118,7 @@ export default function Signup({}: Props): ReactElement {
                         type="email"
                         autoComplete="email"
                         required
-                        placeholder="Email Address"
+                        placeholder="Email"
                         bg={mode("white", "gray.700")}
                         fontSize="md"
                         rounded="0"
@@ -143,7 +143,7 @@ export default function Signup({}: Props): ReactElement {
                         type="password"
                         autoComplete="password"
                         required
-                        placeholder="Password"
+                        placeholder="Senha"
                         bg={mode("white", "gray.700")}
                         fontSize="md"
                         rounded="0"
@@ -199,7 +199,7 @@ export default function Signup({}: Props): ReactElement {
               >
                 Eu aceito a política de privacidade Boa Entrega{" "}
                 <Link href="/privacy-policy" color="purple.500">
-                  privacy policy.
+                  política de privacidade.
                 </Link>
               </Checkbox>
               <Button
