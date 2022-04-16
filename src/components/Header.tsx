@@ -91,12 +91,12 @@ const Header = (props: Props) => {
           >
             <NextLink href="/" passHref>
               <Link fontSize="md" color="gray.700" fontWeight="medium">
-                Cliente
+                Área do Cliente
               </Link>
             </NextLink>
             <NextLink href="/seller/dashboards" passHref>
               <Link fontSize="md" color="gray.700" fontWeight="medium">
-                Vendedor
+              Área do Vendedor
               </Link>
             </NextLink>
             {user ? (

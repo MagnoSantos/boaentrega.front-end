@@ -28,13 +28,32 @@ const NewProduct: React.FC = () => {
   const idSellerAux = idSeller?.toString();
   const [loading, setLoading] = useState<boolean>(false);
   const [primeiraImagem, setValuePrimeiraImagem] = useState("");
-  const image = {
-    path: primeiraImagem,
-  };
+  const [segundaImagem, setValueSegundaImagem] = useState("");
+  const [terceiraImagem, setValueTerceiraImagem] = useState("");
+  const image = [
+    {
+      path: primeiraImagem,
+    },
+    {
+      path: segundaImagem,
+    },
+    {
+      path: terceiraImagem,
+    },
+  ];
 
-  const handleChange = (event: {
+  const handlePrimeiraImagemChange = (event: {
     target: { value: React.SetStateAction<string> };
   }) => setValuePrimeiraImagem(event.target.value);
+
+  const handleSegundaImagemChange = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => setValueSegundaImagem(event.target.value);
+
+  const handleTerceiraImagemChange = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => setValueTerceiraImagem(event.target.value);
+
   const router = useRouter();
 
   const toast = useToast();
@@ -208,12 +227,26 @@ const NewProduct: React.FC = () => {
                     <FormLabel htmlFor="product-image">
                       Imagem dos produtos
                     </FormLabel>
-                    <Input
-                      value={primeiraImagem}
-                      onChange={handleChange}
-                      placeholder="Insira a url da imagem"
-                      size="sm"
-                    />
+                    <Stack spacing="4">
+                      <Input
+                        value={primeiraImagem}
+                        onChange={handlePrimeiraImagemChange}
+                        placeholder="Insira a url da primeira imagem do produto"
+                        size="sm"
+                      />
+                      <Input
+                        value={segundaImagem}
+                        onChange={handleSegundaImagemChange}
+                        placeholder="Insira a url da segunda imagem do produto"
+                        size="sm"
+                      />
+                      <Input
+                        value={terceiraImagem}
+                        onChange={handleTerceiraImagemChange}
+                        placeholder="Insira a url da terceira imagem do produto"
+                        size="sm"
+                      />
+                    </Stack>
                     <FileInput
                       validateForm={props.validateForm}
                       label="Adicionar os Produtos"

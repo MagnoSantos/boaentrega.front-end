@@ -9,7 +9,7 @@ import { fetcher } from "~/lib/api";
 import { Product } from "../types";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { data, error } = await fetcher("commodities", "GET"); // your fetch function here
+  const { data, error } = await fetcher("commodities", "GET");
 
   return {
     props: {
