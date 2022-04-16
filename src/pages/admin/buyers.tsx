@@ -85,7 +85,7 @@ const Buyers: React.FC = () => {
                 key={buyer.id}
                 name={buyer.user.name}
                 email={buyer.user.email}
-                buttonText={buyer.user.banned ? "Unban" : "Ban"}
+                buttonText={buyer.user.banned ? "Desbanir" : "Banir"}
                 buttonColor={buyer.user.banned ? "green" : "red"}
                 onButtonClick={() => {
                   buyer.user.banned
