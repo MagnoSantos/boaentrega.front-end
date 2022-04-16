@@ -68,6 +68,9 @@ const ProfilePage: React.FC = () => {
     await api
       .patch(`users/${user.id}/profile`, values)
       .then(async (response) => {
+        localStorage.setItem("name", values.name);
+        localStorage.setItem("address", values.address);
+        localStorage.setItem("phoneNumber", values.phoneNumber);
         toastWrapper(
           toast,
           response.data.sucess,

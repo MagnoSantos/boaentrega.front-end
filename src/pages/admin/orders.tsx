@@ -1,14 +1,15 @@
 import {
   Box,
   Heading,
-  Link, Stack,
+  Link,
+  Stack,
   Table,
   Tag,
   Tbody,
   Td,
   Th,
   Thead,
-  Tr
+  Tr,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import api from "services/api/backend";
@@ -50,7 +51,7 @@ const BuyerOrders: React.FC = () => {
     <Page>
       <Box overflowY="auto" padding="2">
         <Heading size="lg" fontWeight="extrabold" mb="10">
-          Minhas ordens
+          Ordem de Compra Feitas no Sistema
         </Heading>
         <Stack direction="column">
           (

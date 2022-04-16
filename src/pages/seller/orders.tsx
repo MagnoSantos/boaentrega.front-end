@@ -5,6 +5,7 @@ import {
   Spinner,
   Stack,
   Table,
+  Tag,
   Tbody,
   Td,
   Th,
@@ -12,6 +13,8 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+import api from "services/api/backend";
+import { PriceTag } from "~/components/PriceTag";
 import Dashboard from "~/components/seller/Dashboard";
 import { useSeller } from "~/hooks/useSeller";
 import { fetcher } from "~/lib/api";
@@ -19,19 +22,34 @@ import { SellerOrder } from "~/types";
 
 const SellerOrders: React.FC = () => {
   const { seller } = useSeller();
-  const [orders, setOrders] = useState<SellerOrder[]>();
+
+  const idOrder =
+    typeof window !== "undefined" ? localStorage.getItem("orderId") : null;
+  const idOrderAux = idOrder?.toString();
+  const [ordersId, setOrdersId] = useState("");
+  const [ordersTime, setOrdersTime] = useState("");
+  const [ordersProductId, setOrdersProductId] = useState("");
+  const [ordersProductName, setOrdersProductName] = useState("");
+  const [ordersProductSellerUserName, setOrdersProductSellerUserName] =
+    useState("");
+  const [ordersPrice, setOrdersPrice] = useState("");
+  const [ordersStatus, setOrdersStatus] = useState("");
 
   const getOrders = async () => {
-    if (!seller) return;
-    const { data } = await fetcher<SellerOrder[]>(
-      `sellers/${seller.id}/orders`
-    );
-    setOrders(data);
+    api.get(`order/${idOrderAux}`).then(async (res) => {
+      setOrdersId(res.data.data.product.id);
+      setOrdersTime(res.data.data.time);
+      setOrdersProductId(res.data.data.product.id);
+      setOrdersProductName(res.data.data.product.name);
+      setOrdersProductSellerUserName(res.data.data.product.seller.user.name);
+      setOrdersPrice(res.data.data.product.price);
+      setOrdersStatus(res.data.data.status);
+    });
   };
 
   useEffect(() => {
-    if (seller) getOrders();
-  }, [seller]);
+    getOrders();
+  });
 
   return (
     <Dashboard>
@@ -46,47 +64,42 @@ const SellerOrders: React.FC = () => {
         <Heading size="lg" fontWeight="extrabold" mb="6">
           Minhas Ordens
         </Heading>
-        {!orders ? (
-          <Spinner
-            thickness="4px"
-            speed="0.65s"
-            emptyColor="gray.200"
-            color="purple.500"
-            size="xl"
-          />
-        ) : (
-          <Table variant="striped" size="sm">
-            <Thead position="sticky" top="0" bg="white">
-              <Tr>
-                <Th>Order ID</Th>
-                <Th>Time</Th>
-                <Th>Product</Th>
-                <Th>Price</Th>
-                <Th>Buyer</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {orders.map((order) => (
-                <Tr>
-                  <Td lineHeight="tall">{order.id}</Td>
-                  <Td lineHeight="tall">
-                    {new Date(order.time).toLocaleString()}
-                  </Td>
-                  <Td lineHeight="tall">
-                    <Link
-                      href={`/products/${order.product.id}`}
-                      color="gray.900"
-                    >
-                      {order.product.name}
-                    </Link>
-                  </Td>
-                  <Td lineHeight="tall">₹{order.product.price}</Td>
-                  <Td lineHeight="tall">{order.buyer.user.name}</Td>
-                </Tr>
-              ))}
-            </Tbody>
-          </Table>
-        )}
+        
+        <Table variant="striped" size="sm">
+          <Thead position="sticky" top="0" bg="white">
+            <Tr>
+              <Th>Order ID</Th>
+              <Th>Time</Th>
+              <Th>Product</Th>
+              <Th>Price</Th>
+              <Th>Buyer</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            <Tr>
+              <Td lineHeight="tall">{ordersId}</Td>
+              <Td lineHeight="tall">{new Date(ordersTime).toLocaleString()}</Td>
+              <Td lineHeight="tall">
+                <Link
+                  href={`/products/${ordersProductId}`}
+                  color="gray.900"
+                  size="5"
+                >
+                  {ordersProductName}
+                </Link>
+              </Td>
+              <Td lineHeight="tall">{ordersProductSellerUserName}</Td>
+              <Td lineHeight="tall">
+                <PriceTag price={Number(ordersPrice)} />
+              </Td>
+              <Td lineHeight="tall">
+                <Tag colorScheme={ordersStatus ? "green" : "red"} size="sm">
+                  {ordersStatus ? "Succesful" : "Failed"}
+                </Tag>
+              </Td>
+            </Tr>
+          </Tbody>
+        </Table>
       </Flex>
     </Dashboard>
   );

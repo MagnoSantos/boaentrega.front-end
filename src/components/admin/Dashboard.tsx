@@ -104,23 +104,16 @@ const Admin: NextPage<{ children: ReactElement }> = ({ children }) => {
           </Box>
           <ScrollArea pt="5" pb="6">
             <Stack pb="6">
-              {/* <NextLink href="/admin/approval-requests" passHref>
-                <SidebarLink icon={<IoCheckmarkCircle />}>
-                  Approval Requests
-                </SidebarLink>
-              </NextLink> */}
               <NextLink href="/admin/sellers" passHref>
-                <SidebarLink icon={<IoBag />}>Clients</SidebarLink>
+                <SidebarLink icon={<IoBag />}>Clientes</SidebarLink>
               </NextLink>
-              {/* <NextLink href="/admin/buyers" passHref>
-                <SidebarLink icon={<IoCash />}>Buyers</SidebarLink>
-              </NextLink> */}
+
               <NextLink href="/admin/products" passHref>
-                <SidebarLink icon={<IoCart />}>Products</SidebarLink>
+                <SidebarLink icon={<IoCart />}>Produtos</SidebarLink>
               </NextLink>
-              {/* <NextLink href="/admin/events" passHref>
-                <SidebarLink icon={<IoList />}>Events</SidebarLink>
-              </NextLink> */}
+              <NextLink href="/admin/orders" passHref>
+                <SidebarLink icon={<IoCash />}>Ordens de Compras</SidebarLink>
+              </NextLink>
             </Stack>
           </ScrollArea>
         </Box>

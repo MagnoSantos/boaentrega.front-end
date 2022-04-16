@@ -57,8 +57,6 @@ export const useUser = () => {
 
   var user = salvarDadosNaMemoria();
 
-  console.log("hookData", user?.data);
-
   return {
     user: user.data,
     isLoading: false,

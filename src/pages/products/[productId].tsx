@@ -23,6 +23,7 @@ import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { HiShare } from "react-icons/hi";
+import api from "services/api/backend";
 import Page from "~/components/Page";
 import { useUser } from "~/hooks/useUser";
 import { fetcher } from "~/lib/api";
@@ -48,6 +49,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 };
 
 const ProductPage: React.FC<ProductProps> = ({ product, error }) => {
+  const idUser =
+    typeof window !== "undefined" ? localStorage.getItem("id") : null;
+  const idUserAux = idUser?.toString();
   const toast = useToast();
   const router = useRouter();
   const { user, isLoading } = useUser();
@@ -97,23 +101,21 @@ const ProductPage: React.FC<ProductProps> = ({ product, error }) => {
   const [paymentUrl, setPaymentUrl] = useState("");
 
   const handleOnClick = () => {
-    // let id = router.query.productId;
-    // setPaymentUrl("loading");
-    // const buyProduct = async function as() {
-    //   const res = await fetcher("payment/pay", "POST", {
-    //     pid: id,
-    //   });
-    //   return res;
-    // };
-    // buyProduct().then((res) => {
-    //   if (!res.error) {
-    //     window.location.assign(res.data);
-    //     setPaymentUrl(res.data);
-    //   } else {
-    //     toastWrapper(toast, res.error, "Error", res.error);
-    //     setPaymentUrl("");
-    //   }
-    // });
+    let id = router.query.productId;
+
+    const data = {
+      productId: id,
+      buyerId: idUserAux,
+    };
+
+    setPaymentUrl("loading");
+
+    api.post("/order", data).then(async (res) => {
+      console.log("resposta", res.data.data.id);
+      localStorage.setItem("orderId", res.data.data.id);
+      toastWrapper(toast, "", "Produto adicionado na ordem de compra!");
+      setPaymentUrl("");
+    });
   };
 
   const slidesCount = images.length;

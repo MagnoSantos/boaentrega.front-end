@@ -47,7 +47,6 @@ const Header = (props: Props) => {
       );
       localStorage.setItem("ecstacy-cookie-policy", "agreed");
     }
-    console.log("headerUser", user);
   }, []);
 
   const onLogout = async () => {
