@@ -125,7 +125,7 @@ const Header = (props: Props) => {
             ) : (
               <NextLink href="/auth/login" passHref>
                 <Button colorScheme="purple" size="sm" isLoading={isLoading}>
-                  Log In
+                  Logar
                 </Button>
               </NextLink>
             )}
