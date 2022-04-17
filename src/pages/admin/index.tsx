@@ -8,7 +8,7 @@ const AdminIndex: React.FC = () => {
   const userAdminAux = userAdmin?.toString();
   const router = useRouter();
   useEffect(() => {
-    userAdminAux == "admin" ? router.replace("/admin/sellers") : null;
+    userAdminAux == "true" ? router.replace("/admin/sellers") : null;
   }, []);
   return (
     <>
