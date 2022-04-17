@@ -69,7 +69,7 @@ const Products: React.FC = () => {
             <AdminProductCard
               key={product.id}
               product={product}
-              buttonText={product.banned ? "Unban" : "Ban"}
+              buttonText={product.banned ? "Desbanir" : "Banir"}
               buttonColor={product.banned ? "green" : "red"}
               onButtonClick={() =>
                 product.banned ? onUnban(product.id) : onBan(product.id)
