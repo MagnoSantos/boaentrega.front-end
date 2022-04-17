@@ -253,15 +253,15 @@ const ProductPage: React.FC<ProductProps> = ({ product, error }) => {
                 if (!user && !isLoading) {
                   toastWrapper(
                     toast,
-                    "You must login before placing an order.",
-                    "Login required!"
+                    "Você deve realizar o login e depois confirmar uma ordem.",
+                    "Login requerido"
                   );
                   router.push("/auth/login");
                 } else if (!user?.address || !user?.phoneNumber) {
                   toastWrapper(
                     toast,
-                    "Please complete your profile before placing an order",
-                    "Profile Incomplete!"
+                    "Por favor complete seu perfil antes de realizar uma ordem",
+                    "Perfil incompleto!"
                   );
                   router.push("/profile");
                 } else {
