@@ -17,8 +17,6 @@ import api from "services/api/backend";
 import { PriceTag } from "~/components/PriceTag";
 import Dashboard from "~/components/seller/Dashboard";
 import { useSeller } from "~/hooks/useSeller";
-import { fetcher } from "~/lib/api";
-import { SellerOrder } from "~/types";
 
 const SellerOrders: React.FC = () => {
   const { seller } = useSeller();
@@ -69,10 +67,10 @@ const SellerOrders: React.FC = () => {
           <Thead position="sticky" top="0" bg="white">
             <Tr>
               <Th>Order ID</Th>
-              <Th>Time</Th>
-              <Th>Product</Th>
-              <Th>Price</Th>
-              <Th>Buyer</Th>
+              <Th>Tempo</Th>
+              <Th>Produto</Th>
+              <Th>Preço</Th>
+              <Th>Comprador</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -94,7 +92,7 @@ const SellerOrders: React.FC = () => {
               </Td>
               <Td lineHeight="tall">
                 <Tag colorScheme={ordersStatus ? "green" : "red"} size="sm">
-                  {ordersStatus ? "Succesful" : "Failed"}
+                  {ordersStatus ? "Sucesso" : "Falha"}
                 </Tag>
               </Td>
             </Tr>
