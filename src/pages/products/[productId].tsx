@@ -243,7 +243,6 @@ const ProductPage: React.FC<ProductProps> = ({ product, error }) => {
           <Text color={useColorModeValue("gray.700", "gray.700")} mb="4">
             {seller.user.name}
           </Text>
-          <Tooltip label="Due to issues with Razorpay, if you get 'Bad request', please refresh the page!">
             <Button
               colorScheme="purple"
               size="md"
@@ -272,7 +271,6 @@ const ProductPage: React.FC<ProductProps> = ({ product, error }) => {
             >
               Comprar
             </Button>
-          </Tooltip>
         </Box>
       </SimpleGrid>
     </Page>
