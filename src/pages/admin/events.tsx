@@ -62,7 +62,7 @@ const Events: React.FC = () => {
             size="xl"
           />
         ) : error || events.error ? (
-          <Text>An error occured, please try again</Text>
+          <Text>Um erro ocorreu, favor tentar novamente</Text>
         ) : (
           <Table variant="striped" size="sm">
             <Thead position="sticky" top="0" bg="white">

@@ -45,7 +45,7 @@ const Products: React.FC = () => {
         await sleep(2500);
         router.reload();
       } else {
-        toastWrapper(toast, undefined, "Atenção!", "Produto banido!");
+        toastWrapper(toast, undefined, "Atenção!", "Produto desbanido!");
         await sleep(2500);
         router.reload();
       }

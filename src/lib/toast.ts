@@ -7,7 +7,7 @@ export const toastWrapper = (
 ) =>
   toast({
     position: info ? "bottom-left" : "top",
-    title: error ? "An error ocurred" : title,
+    title: error ? "Um erro ocorreu!" : title,
     description: error || message,
     status: error ? "error" : info ? "info" : "success",
     variant: info ? "left-accent" : "solid",

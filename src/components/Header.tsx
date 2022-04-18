@@ -37,7 +37,7 @@ const Header = (props: Props) => {
 
   useEffect(() => {
     fetcher("", "GET");
-    if (!localStorage.getItem("ecstacy-cookie-policy")) {
+    if (!localStorage.getItem("boaentrega-cookie-policy")) {
       toastWrapper(
         toast,
         undefined,
@@ -45,7 +45,7 @@ const Header = (props: Props) => {
         "Ao continuar acessando o site, você concorda com a política de cookies e de privacidade para melhor experiência.",
         true
       );
-      localStorage.setItem("ecstacy-cookie-policy", "agreed");
+      localStorage.setItem("boaentrega-cookie-policy", "agreed");
     }
   }, []);
 
@@ -98,8 +98,8 @@ const Header = (props: Props) => {
                 Área do Vendedor
               </Link>
             </NextLink>
-            {user.name?.length !== 0 ? (
-              <>
+            {!!user.name? (
+             <>
                 <Button
                   colorScheme="red"
                   size="sm"

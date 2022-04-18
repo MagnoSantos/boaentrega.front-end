@@ -68,50 +68,7 @@ const ForgotPassword: React.FC = () => {
   };
 
   const ForgotPasswordForm: React.FC = () => (
-    <Formik initialValues={{ email: "" }} onSubmit={submitForgotPassword}>
-      {() => (
-        <Form>
-          <Stack spacing="-px">
-            <Field name="email" validate={validate.email}>
-              {({ field, form }: any) => (
-                <FormControl
-                  id="email"
-                  isInvalid={form.errors.email && form.touched.email}
-                >
-                  <FormLabel srOnly htmlFor="email">
-                    Email
-                  </FormLabel>
-                  <Input
-                    size="lg"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    placeholder="Email address"
-                    bg={mode("white", "gray.700")}
-                    fontSize="md"
-                    {...field}
-                  />
-                  <FormErrorMessage>{form.errors.email}</FormErrorMessage>
-                </FormControl>
-              )}
-            </Field>
-          </Stack>
-          <Button
-            size="lg"
-            type="submit"
-            mt="8"
-            w="full"
-            colorScheme="purple"
-            fontSize="md"
-            fontWeight="bold"
-            isLoading={loading}
-          >
-            Enviar OTP ao e-mail
-          </Button>
-        </Form>
-      )}
-    </Formik>
+    <Text>Em Desenvolvimento</Text> 
   );
 
   const UpdatePasswordForm: React.FC = () => (
@@ -209,13 +166,12 @@ const ForgotPassword: React.FC = () => {
   return (
     <Page>
       <Stack direction="column" spacing="6">
-        <Heading size="lg">Reset your password</Heading>
+        <Heading size="lg">Resetar sua senha</Heading>
         <Container maxWidth="40ch" padding="0">
           {showUpdateForm ? (
             <Stack direction="column" spacing="8">
               <Text>
-                O token deve ser colado usando o botão coloar ou usando o
-                teclado virtual.
+                Em desenvolvimento!
               </Text>
               <UpdatePasswordForm />
               <VirtualKeyboard

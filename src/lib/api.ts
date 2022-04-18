@@ -47,13 +47,13 @@ export const fetcher = async <T = any>(
     if (data.csrfToken) csrfToken = data.csrfToken;
 
     if (!data.success) {
-      console.error("An error occured", data.message);
+      console.error("Um erro ocorreu", data.message);
       return { error: data.message };
     }
     return { data: data.data };
   } catch (err) {
     return {
-      error: "An error occured while making the request. Please try again.",
+      error: "Um erro ocorreu ao tentar ralizar a solicitação. Por favor, tente novamente!",
     };
   }
 };
